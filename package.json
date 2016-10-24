@@ -1,0 +1,16 @@
+{
+  "name": "001MySQLDriver",
+  "version": "0.0.1",
+  "description": "Initial mySQL/MongoDB Build",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Mike Hannon and Charlie Mead",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.11.1",
+    "electron":"^1.4.4"
+  }
+}
