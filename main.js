@@ -56,7 +56,9 @@ app.on('activate', () => {
 
 
 // communication
-ipcMain.on('synchronous-message', (event, arg) => {
+let connection = ''
+ipcMain['onReceiptOf'] = ipcMain.on;
+ipcMain.onReceiptOf('dataForMySQLConnection', (event, arg) => {
   let p = arg[0];
   let u = arg[1];
   let pw = arg[2];
@@ -65,7 +67,7 @@ ipcMain.on('synchronous-message', (event, arg) => {
       console.error(`exec error: ${error}`);
       return;
     }
-    let connection = MYSQL.createConnection({
+    connection = MYSQL.createConnection({
       host: `127.0.0.1`,
       user: `${u?u:'root'}`,
       password:`${pw?pw:''}`,
@@ -78,5 +80,16 @@ ipcMain.on('synchronous-message', (event, arg) => {
     console.log(`stdout: ${stdout}`);
     console.log(`stderr: ${stderr}`);
   });
-  event.sender.send('synchronous-reply', 'pong')
+  event.sender.send('synchronous-reply', '')
+})
+ipcMain.onReceiptOf('schemaToLoad',(event,arg)=>{
+console.log(arg[0].value);
+connection.query(`USE ${arg[0].value};`);
+connection.query(`SHOW TABLES;`, function(err, result){
+  console.log(result);
+for (var i = 0; i < result.length; i++) {
+  console.log(result[i][`Tables_in_${arg[0].value}`]);
+}
+} )
+
 })

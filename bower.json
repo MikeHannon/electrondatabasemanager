@@ -1,0 +1,20 @@
+{
+  "name": "001MySQLDriver",
+  "description": "Initial mySQL/MongoDB Build",
+  "main": "main.js",
+  "authors": [
+    "Mike Charlie and Justin"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/MikeHannon/electrondatabasemanager",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.1"
+  }
+}
