@@ -1,5 +1,5 @@
 {
-  "name": "001MySQLDriver",
+  "name": "mySQLdriver",
   "description": "Initial mySQL/MongoDB Build",
   "main": "main.js",
   "authors": [
